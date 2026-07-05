@@ -4,6 +4,14 @@ from respx.utils import SetCookie
 
 
 class TestSetCookie:
+    def test_partitioned_cookie_implies_secure(self) -> None:
+        cookie = SetCookie("foo", "bar", partitioned=True)
+
+        assert cookie == (
+            "Set-Cookie",
+            "foo=bar; Secure; Partitioned",
+        )
+
     def test_can_render_all_attributes(self) -> None:
         expires = datetime.fromtimestamp(0, tz=timezone.utc)
         cookie = SetCookie(
