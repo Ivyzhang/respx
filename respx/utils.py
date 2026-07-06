@@ -144,6 +144,8 @@ class SetCookie(
             attrs["SameSite"] = same_site
             if same_site == "None":  # pragma: no branch
                 secure = True
+        if partitioned:
+            secure = True
         if secure:
             attrs["Secure"] = True
         if partitioned:

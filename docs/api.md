@@ -206,6 +206,8 @@ A utility to render a `("Set-Cookie", <cookie header value>)` tuple. See route [
 
 > <code>respx.<strong>SetCookie</strong>(*name, value, path=None, domain=None, expires=None, max_age=None, http_only=False, same_site=None, secure=False, partitioned=False*)</strong></code>
 
+`same_site="None"` and `partitioned=True` imply `secure=True`, matching browser cookie requirements.
+
 ``` python
 import respx
 respx.post("https://example.org/").mock(
